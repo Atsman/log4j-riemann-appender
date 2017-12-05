@@ -1,4 +1,4 @@
-(defproject log4j-riemann-appender "0.1.1"
+(defproject riemann-log4j-appender "0.1.1"
   :description "A log4j appender implementation to write to a Riemann server."
   :url "https://github.com/Atsman/log4j-riemann-appender"
   :license {:name "Eclipse Public License"

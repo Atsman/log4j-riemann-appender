@@ -1,4 +1,4 @@
-# log4j-riemann-appender
+# riemann-log4j-appender
 
 That is a java library designed to append logs to riemann backend for futher processing.
 

@@ -1,5 +1,7 @@
 # riemann-log4j-appender
 
+[![Clojars Project](https://img.shields.io/clojars/v/riemann-log4j-appender.svg)](https://clojars.org/riemann-log4j-appender)
+
 That is a java library designed to append logs to riemann backend for futher processing.
 
 ## Configuration

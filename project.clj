@@ -3,7 +3,7 @@
   :url "https://github.com/gorillalabs/log4j-riemann-appender/"
   :license {:name "Eclipse Public License"
             :url  "http://www.eclipse.org/legal/epl-v10.html"}
-  :dependencies [[com.aphyr/riemann-java-client "0.4.1"]]
+  :dependencies [[io.riemann/riemann-java-client "0.4.5"]]
   :java-source-paths ["src"]
   :java-test-paths ["test"]
   :profiles {:provided {:dependencies [[log4j/log4j "1.2.17"]]}

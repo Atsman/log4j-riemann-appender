@@ -1,14 +1,22 @@
-# logmon-data-generator
+# log4j-riemann-appender
 
-A Clojure library designed to ... well, that part is up to you.
+That is a java library designed to append logs to riemann backend for futher processing.
 
-## Usage
+## Configuration
+Add dependency to add your project.
 
-FIXME
+Add the following lines to your log4j.properties
+```properties
+log4j.appender.riemann = org.gorillalabs.log4jAddons.RiemannAppender
+log4j.appender.riemann.localHostname = <hostname>
+log4j.appender.riemann.transport = <tcp|udp>
+log4j.appender.riemann.localServicename = <servicename>
+log4j.appender.riemann.reconnectionDelay = 1000
+```
 
 ## License
 
-Copyright © 2015 FIXME
+Copyright © 2017 Aleh Atsman
 
 Distributed under the Eclipse Public License either version 1.0 or (at
 your option) any later version.

@@ -1,21 +1,23 @@
 package org.gorillalabs.log4jAddons;
 
-import com.aphyr.riemann.client.EventDSL;
-import com.aphyr.riemann.client.RiemannClient;
+import io.riemann.riemann.client.EventDSL;
+import io.riemann.riemann.client.RiemannClient;
 import org.apache.log4j.AppenderSkeleton;
 import org.apache.log4j.spi.LoggingEvent;
 
 import java.io.IOException;
 
-/**
- * Created by cbetz on 09.12.15.
- */
 public class RiemannAppender extends AppenderSkeleton {
+    private static final String TCP = "tcp";
+    private static final String UDP = "udp";
+
     private static final String DEFAULT_HOST = "localhost";
+    private static final String DEFAULT_TRANSPORT = TCP;
     private static final int DEFAULT_PORT = 5555;
     private static final int DEFAULT_RECONNECTION_DELAY = 1000;
 
     private String host = DEFAULT_HOST;
+    private String transport = DEFAULT_TRANSPORT;
     private int port = DEFAULT_PORT;
     private int reconnectionDelay = DEFAULT_RECONNECTION_DELAY;
     private RiemannClient riemann;
@@ -30,6 +32,14 @@ public class RiemannAppender extends AppenderSkeleton {
 
     public void setLocalHostname(String localHostname) {
         this.localHostname = localHostname;
+    }
+
+    public String getTransport() {
+      return transport;
+    }
+
+    public void setTransport(String transport) throws Exception {
+      this.transport = transport;
     }
 
     public String getLocalServicename() {
@@ -92,7 +102,11 @@ public class RiemannAppender extends AppenderSkeleton {
     public void activateOptions() {
         super.activateOptions();
         try {
-            riemann = RiemannClient.tcp(getHost(), getPort());
+            if (transport == TCP) {
+                riemann = RiemannClient.tcp(getHost(), getPort());
+            } else {
+                riemann = RiemannClient.udp(getHost(), getPort());
+            }
             riemann.connect();
         } catch (IOException e) {
             if (debug) {
@@ -100,7 +114,6 @@ public class RiemannAppender extends AppenderSkeleton {
                 e.printStackTrace();
             }
         }
-
     }
 
 

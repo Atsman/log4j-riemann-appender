@@ -1,4 +1,5 @@
 # riemann-log4j-appender
+### Fork of unmaitained project https://github.com/gorillalabs/log4j-riemann-appender
 
 [![Clojars Project](https://img.shields.io/clojars/v/riemann-log4j-appender.svg)](https://clojars.org/riemann-log4j-appender)
 
